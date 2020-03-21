@@ -1,0 +1,21 @@
+h2 {
+  color: red;
+}
+h2 + div {
+  color: green;
+}
+.myList>li {
+  border:1px solid green;
+}
+.myClass {
+  background-color: green;
+}
+.myClass.otherClass {
+  color: white;
+}
+#myId {
+  background-color: yellow;
+}
+section > ul+div {
+  border: 1px solid pink;
+}

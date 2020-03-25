@@ -1,14 +1,6 @@
-export type FilterTypes = 'all' | 'active' | 'completed';
+import { combineReducers } from 'redux';
+import {} from './reducer';
 
-export interface TodoItem {
-  label: string;
-  completed: boolean;
-}
+type FilterTypes = 'all' | 'active' | 'completed';
 
-export interface Store {
-  todos: {
-    [id: string]: TodoItem
-  },
-  _onAdd: (label: string) => void,
-  filter: FilterTypes
-}
+export default combineReducers({})

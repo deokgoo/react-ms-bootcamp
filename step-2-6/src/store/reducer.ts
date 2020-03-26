@@ -1,5 +1,6 @@
-import { AnyAction } from 'redux';
 import * as actionType from './actionType';
+import { AnyAction } from 'redux';
+import { uuid } from 'uuidv4';
 
 enum FilterTypes {
   ALL = 'ALL',
@@ -14,7 +15,7 @@ export interface TodoItem {
 
 export interface Store {
   todos: {
-    [id: number]: TodoItem;
+    [id: string]: TodoItem;
   };
   filter: FilterTypes;
 }
@@ -24,14 +25,9 @@ export const filterReducer = (state: Store = {todos:{} ,filter: FilterTypes.ALL}
     case actionType.ADD_TODO: {
       const { todo } = action.payload;
       const { todos, ...args } = state;
+      todos[uuid()] = todo;
       return {
-        todos : {
-          ...todos,
-          "test": {
-            label: todo,
-            completed: false,
-          }
-        },
+        todos,
         ...args
       };
     }

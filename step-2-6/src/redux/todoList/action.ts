@@ -13,15 +13,7 @@ export const remove = () => {
 
 };
 
-export const complete = () => {
-
-};
-
 export const clear = () => {
-
-};
-
-export const setFilter = () => {
 
 };
 

@@ -1,8 +1,11 @@
 import React, { useState, useContext } from 'react';
 import { TodoContext } from '../TodoContext';
+import { connect } from 'react-redux';
+import { setFilter } from '../redux/visibleFilter/action';
+import { FilterTypesInterface } from '../redux/visibleFilter/type';
 
 const TodoHeader = (props: any) => {
-  const { filter, setFilter, addTodo } = useContext(TodoContext);
+  const { filter } = useContext(TodoContext);
   const [labelInput, setLabelInput] = useState<string>('');
 
   const _onChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -11,11 +14,11 @@ const TodoHeader = (props: any) => {
 
   const _onAddFilter = (e: React.FormEvent) => {
     const nFilter = e.currentTarget.textContent;
-    setFilter(nFilter);
-  }
+    props.setFilter(1);
+  };
 
   const _onAdd = () => {
-    addTodo(labelInput);
+    // addTodo(labelInput);
     setLabelInput('');
   };
 
@@ -35,4 +38,17 @@ const TodoHeader = (props: any) => {
   );
 }
 
-export default TodoHeader;
+const mapStateToProps = (state: any) => {
+  const { VisibleFilterReducer } = state;
+
+  return {filter: VisibleFilterReducer}
+};
+
+export const mapDispatchToProps = {
+  setFilter,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(TodoHeader);

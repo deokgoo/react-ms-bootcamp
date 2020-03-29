@@ -1,7 +1,7 @@
 import * as actionType from './actionType';
-import { FilterTypesInterface } from './type';
+import { FilterTypeEnum } from './type';
 
-export const setFilter = (filterType: FilterTypesInterface) => {
+export const setFilter = (filterType: FilterTypeEnum) => {
   return ({
     type: actionType.SET_FILTER,
     filterType

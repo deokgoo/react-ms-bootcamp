@@ -1,13 +1,21 @@
 import React from 'react';
-import TodoListItem from './TodoListItem';
+import { FilterTypeEnum } from '../reducers/visibleFilter/type';
+import TodoListItem from '../components/TodoListItem'
 import { connect } from 'react-redux';
 
 const TodoList = (props: any) => {
-  const todoList = props.todoListStore;
-  const { filter } = props.visibleFilterStore;
-
-  const filteredTodos = Object.keys(todoList).filter(id => {
-    return filter === 'all' || (filter === 'completed' && todoList[id].completed) || (filter === 'active' && !todoList[id].completed);
+  let todoList = props.todoListStore;
+  let { filterType } = props.visibleFilterStore;
+  
+  const filteredTodos = Object.keys(todoList).filter(x => {
+    switch(FilterTypeEnum[filterType]){
+      case 'ACTIVE':
+        return !todoList[x].completed
+      case 'COMPLETED':
+        return todoList[x].completed
+      default:
+        return true;
+    }
   });
 
   return (
@@ -20,11 +28,11 @@ const TodoList = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => {
-  const { TodoListReducer, VisibleFilterReducer } = state;
-
-  return { todoListStore: TodoListReducer, visibleFilterStore: VisibleFilterReducer};
+  const { todoListStore, visibleFilterStore } = state;
+  
+  return { todoListStore, visibleFilterStore};
 };
 
 export default connect(
-    mapStateToProps
+  mapStateToProps
 )(TodoList);

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import Store from './redux/store';
+import Store from './reducers/store';
 import TodoApp from './TodoApp';
 import './style.css'
 

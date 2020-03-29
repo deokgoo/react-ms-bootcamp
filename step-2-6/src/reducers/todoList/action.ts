@@ -9,11 +9,13 @@ export const addTodo = (label: string) => {
   })
 };
 
-export const remove = () => {
-
-};
-
 export const clear = () => {
+  return ({
+    type: actionType.CLEAR
+  })
+}
+
+export const remove = () => {
 
 };
 

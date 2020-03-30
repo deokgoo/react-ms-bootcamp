@@ -5,7 +5,7 @@ const TodoListItem = (props: any) => {
   return (
     <li className="todo">
       <label>
-        <input type="checkbox" checked={completed}/> { children }
+        <input type="checkbox" checked={completed} onChange={()=>{}}/> { children }
       </label>
     </li>
   );

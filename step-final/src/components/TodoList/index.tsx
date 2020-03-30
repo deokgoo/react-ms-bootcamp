@@ -10,7 +10,7 @@ const TodoList = (props: {todoLists: todoListType}) => {
       {
         Object.keys(todoLists).map(x => {
           let { label, completed } = todoLists[x];
-          return <TodoListItem completed={completed}>{label}</TodoListItem>
+          return <TodoListItem completed={completed} key={x}>{label}</TodoListItem>
         })
       }
 

@@ -1,38 +1,53 @@
-.App {
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 400px;
+  margin: 20px auto;
+}
+
+h1 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+small {
+  font-size: 0.5em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.addTodo {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.textfield {
+  flex-grow: 1;
+  margin-right: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.submit {
+  border: none;
+  padding: 5px 10px;
+}
+
+.filter {
+  margin: 10px 0 0;
+}
+
+.filter button {
+  background: transparent;
+  border: none;
+}
+
+.filter .selected {
+  border-bottom: 2px solid blue;
+}
+
+.todos {
+  list-style: none;
+  padding: 0;
+}
+
+footer {
+  display: flex;
+}
+
+footer span {
+  flex-grow: 1;
 }

@@ -1,7 +1,9 @@
 import React from 'react';
 import FilterButton from '../FilterButton';
+import { filterItem, filterTypeObject } from '../../redux/types/filterType';
 
-const Header = (props: any) => {
+const Header = (props: {filter: filterItem}) => {
+  let { filter } = props;
   return (
     <header>
       <h1>todos</h1>
@@ -10,7 +12,8 @@ const Header = (props: any) => {
         <button className="submit">Add</button>
       </div>
       <nav className="filter">
-        <FilterButton />
+        { Object.values(filterTypeObject).map(x =>
+          <FilterButton filterItem={filter} key={x}>{x}</FilterButton>) }
       </nav>
     </header>
   );

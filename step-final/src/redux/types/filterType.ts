@@ -1,10 +1,10 @@
-type filter = 'ALL' | 'ACTIVE' | 'COMPLETED'
+export type filterItem = 'ALL' | 'ACTIVE' | 'COMPLETED'
 
 export interface filterType {
-  filter: filter
+  filter: filterItem
 }
 
-export const filterTypeObject: {[key: string]: filter} = {
+export const filterTypeObject: {[key: string]: filterItem} = {
   'ALL': 'ALL',
   'ACTIVE': 'ACTIVE',
   'COMPLETED': 'COMPLETED',

@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { filterType } from '../redux/types/filterType';
 import Header from '../components/Header';
+import { setFilter } from '../redux/actions/filterAction';
+import { addTodo } from '../redux/actions/todoListAction';
 
 const mapStateToProps = (state: {FilterStore: filterType}) => {
   const { filter } = state.FilterStore;
@@ -8,4 +10,6 @@ const mapStateToProps = (state: {FilterStore: filterType}) => {
   return { filter }
 };
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = ({ setFilter, addTodo });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

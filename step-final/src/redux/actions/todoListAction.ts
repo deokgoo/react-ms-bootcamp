@@ -1,14 +1,16 @@
 import { todoListType, todoListAction } from '../types/todoListType';
 
-export const addTodo = () => {
+export const addTodo = (todoItem: string) => {
   return ({
-    type: todoListAction.ADD_TODO
+    type: todoListAction.ADD_TODO,
+    todoItem
   })
 };
 
-export const toggleCompleted = () => {
+export const toggleCompleted = (createdAt: string) => {
   return ({
-    type: todoListAction.TOGGLE_COMPLETED
+    type: todoListAction.TOGGLE_COMPLETED,
+    createdAt
   })
 };
 

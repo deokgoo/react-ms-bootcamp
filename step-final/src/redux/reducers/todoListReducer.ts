@@ -14,17 +14,27 @@ const exampleTodoList = {
 
 export default (state: todoListType = exampleTodoList, action: AnyAction ) => {
   switch (action.type) {
+    case todoListAction.ADD_TODO: {
+      let now = new Date();
+      let createdAt = `${now.getFullYear()}${now.getMonth()}${now.getDate()}${now.getUTCDate()}${now.getHours()}${now.getMinutes()}${now.getMilliseconds()}`;
+      let nextTodo = {
+        [createdAt] : {
+          label: action.todoItem,
+          completed: false
+        }
+      };
+
+      return Object.assign(nextTodo, state);
+    }
     case todoListAction.CLEAR: {
       // VOID
       return state
     }
-    case todoListAction.ADD_TODO: {
-      // new todo
-      return state
-    }
     case todoListAction.TOGGLE_COMPLETED: {
-      // created
-      return state
+      let nextState = Object.assign({}, state);
+
+      nextState[action.createdAt].completed = !nextState[action.createdAt].completed;
+      return nextState
     }
     case todoListAction.REMOVE: {
       // created

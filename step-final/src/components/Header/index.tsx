@@ -1,19 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FilterButton from '../FilterButton';
-import { filterItem, filterTypeObject } from '../../redux/types/filterType';
+import { filterType, filterItem, filterTypeObject } from '../../redux/types/filterType';
 
-const Header = (props: {filter: filterItem}) => {
+interface headerProps {
+  filter: filterItem,
+  setFilter: (filterType: filterType) => void
+  addTodo: (todoItem: string) => void
+}
+
+const Header = (props: headerProps) => {
   let { filter } = props;
+  let { setFilter, addTodo } = props;
+  let [inputItem, setInputItem] = useState<string>('');
+
+  const _onChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setInputItem(e.currentTarget.value);
+  };
+
+  const _onClick = () => {
+    setInputItem('');
+    return addTodo(inputItem);
+  };
+
   return (
     <header>
       <h1>todos</h1>
       <div className="addTodo">
-        <input className="textfield" placeholder="text"/>
-        <button className="submit">Add</button>
+        <input className="textfield" placeholder="text" onChange={_onChange} value={inputItem}/>
+        <button className="submit" onClick={_onClick}>Add</button>
       </div>
       <nav className="filter">
         { Object.values(filterTypeObject).map(x =>
-          <FilterButton filterItem={filter} key={x}>{x}</FilterButton>) }
+          <FilterButton key={x} filterItem={filter} _onClick={setFilter}>{x}</FilterButton>) }
       </nav>
     </header>
   );

@@ -1,9 +1,14 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import TodoList from '../components/TodoList';
+import { toggleCompleted } from '../redux/actions/todoListAction';
 
 const mapStateToProps = (state: any) => {
   const { TodoListStore } = state;
   return { todoLists: TodoListStore }
 };
 
-export default connect(mapStateToProps)(TodoList);
+const mapDispatchToProps = ({
+  toggleCompleted
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

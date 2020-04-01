@@ -1,11 +1,21 @@
 import React from 'react';
-import { filterTypeObject } from '../../redux/types/filterType';
+import {filterItem, filterType, filterTypeObject} from '../../redux/types/filterType';
 
-const FilterButton = (props: any) => {
+interface FilterButtonProps {
+  children: filterItem,
+  filterItem: filterItem,
+  _onClick: (x: filterType) => void
+}
+const FilterButton = (props: FilterButtonProps) => {
   let { children, filterItem } = props;
   let { _onClick } = props;
+
+  const _setFilter = () => {
+    _onClick({ filter: filterTypeObject[children] })
+  };
+
   return (
-    <button className={children===filterItem?"selected":""} onClick={()=>{_onClick({ filter: filterTypeObject[children] })}}>
+    <button className={children===filterItem?"selected":""} onClick={_setFilter}>
       { children }
     </button>
   )

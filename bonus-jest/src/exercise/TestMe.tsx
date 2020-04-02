@@ -11,12 +11,17 @@ export interface TestMeState {
 export const TestMe = (props: TestMeProps) => {
   return (
     <div id="testMe">
-      <InnerMe name={props.name} />
+      <InnerMe name={props.name}/>
     </div>
   );
 };
 
 export class InnerMe extends React.Component<TestMeProps, TestMeState> {
+  constructor(props: TestMeProps) {
+    super(props);
+    this.onMouseOver = this.onMouseOver.bind(this);
+  }
+
   state = {
     enabled: false
   };

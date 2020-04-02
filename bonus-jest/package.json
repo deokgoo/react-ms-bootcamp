@@ -6,13 +6,18 @@
   "scripts": {
     "test": "jest"
   },
-  "jest": {},
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-react-jsx": "^7.9.4",
     "@babel/preset-env": "^7.9.0",
+    "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.9.0",
     "@types/jest": "^25.1.4",
     "babel-jest": "^25.2.4",
     "jest": "^25.2.4"
+  },
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }

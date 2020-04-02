@@ -609,7 +609,7 @@ ij_cfml_ternary_operation_signs_on_next_line = false
 ij_cfml_ternary_operation_wrap = off
 ij_cfml_while_on_new_line = false
 
-[{*.cjs,*.js}]
+[{*.cjs,*.js,*.tsx,*jsx}]
 indent_size = 2
 tab_width = 2
 ij_continuation_indent_size = 2

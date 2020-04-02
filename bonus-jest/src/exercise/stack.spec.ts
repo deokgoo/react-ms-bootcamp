@@ -1,17 +1,34 @@
 import { Stack } from './stack';
 
 describe('Stack', () => {
+	type stackType = number;
+	let target: Stack<stackType>;
+	beforeEach(() => {
+		target = new Stack<stackType>();
+	});
+
+	afterEach(() => {
+		target = null;
+	});
+
   it('should push item to the top of the stack', () => {
-    type stackType = number;
-    // Use stack push calls to add some items to the stack
-    // Write assertions via the expect() API
+
+    let target: Stack<stackType> = new Stack();
+
+    [1, 2, 3].forEach(x => {
+			target.push(x);
+			expect(target.peek()).toBe(x);
+		});
   });
 
   it('should pop the item from the top of stack', () => {
     // TODO: implement test here:
-    // 1. Instantiate a new Stack - i.e. const stack = new Stack<number>();
-    // 2. Use stack push calls to add some items to the stack
-    // 3. pop a few items off the stack
-    // 4. write assertions via the expect() API
+		const testCase = [1, 2, 3];
+
+    testCase.forEach(x => target.push(x));
+
+    testCase.reverse().forEach(x => {
+			expect(target.pop()).toEqual(x);
+		})
   });
 });

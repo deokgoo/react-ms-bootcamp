@@ -16,13 +16,15 @@ describe('TestMe Component', () => {
     container = null;
   });
   it('should render correctly when hovered', () => {
-    act(() => {
-      ReactDOM.render(<TestMe  name={"testName"}/>, container);
-    });
+    const testName = 'testName';
 
-    // 1. mount a <TestMe> Component here
-    // 2. use enzyme wrapper's find() method to retrieve the #innerMe element
-    // 3. simulate a hover with "mouseover" event via the simulate() API
-    // 4. make assertions with expect on the text() of the #innerMe element
+    act(() => {
+      ReactDOM.render(<TestMe  name={testName}/>, container);
+    });
+    let targetElement = container.querySelector('#innerMe');
+
+    expect(targetElement.textContent).toEqual(`Hello ${testName}, Hover Over Me`);
+    targetElement.dispatchEvent(new MouseEvent("mouseover", { bubbles: true }));
+    expect(targetElement.textContent).toEqual('Enabled');
   });
 });
